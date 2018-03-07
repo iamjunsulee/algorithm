@@ -1,4 +1,4 @@
-package java_practice;
+package backjun.etc;
 
 public class q6679 {
 	/*

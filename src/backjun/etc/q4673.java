@@ -1,4 +1,4 @@
-package java_practice;
+package backjun.etc;
 
 import java.util.Arrays;
 

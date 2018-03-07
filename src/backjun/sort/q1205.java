@@ -1,4 +1,4 @@
-package java_practice;
+package backjun.sort;
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class q1205 {
 		sort_descending(scoreList,n);
 
 		if(scoreList[n-1] >= score && n == p){
-			System.out.println(-1);
+			System.out.print(-1);
 		}else{
 			int rank = 1;
 			for(int i=0;i<n;i++){
@@ -27,11 +27,11 @@ public class q1205 {
 					break;
 				}
 			}
-			System.out.println(rank);
+			System.out.print(rank);
 		}
 	}
 	
-	public static void sort_descending(int num[], int size){
+	public static void sort_descending(int[] num, int size){
 		int max,temp;
 		for(int i=0;i<size-1;i++){
 			max = i;
