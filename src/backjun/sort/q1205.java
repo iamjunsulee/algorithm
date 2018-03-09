@@ -1,6 +1,5 @@
 package backjun.sort;
 
-import java.util.Scanner;
 /*
  * 유진이가 즐겨하는 디제이맥스 게임은 각각의 노래마다 랭킹 리스트가 있다. 이것은 매번 게임할 때 마다 얻는 점수가 비오름차순으로 저장되 있는 것이다.
  * 이 랭킹 리스트의 등수는 보통 위에서부터 몇 번째 있는 점수인지로 결정한다. 하지만, 같은 점수가 있을 때는 그러한 점수의 등수 중에 가장 작은 등수가 된다.
@@ -21,31 +20,42 @@ import java.util.Scanner;
  * 
  * 결과 : 런타임 에러 => 배열의 공간문제는 아닌 거 같고, 시간이 오래 걸려서 발생하는 거 같기도 한데, 원인을 잘모르겠다.  
  */
+import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class q1205 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int score = sc.nextInt();
-		int p = sc.nextInt();
-		int[] scoreList = new int[n+1];
-		int i,j;
-		for(i=0;i<n;i++){
-			scoreList[i] = sc.nextInt();
-		}
+	public static void main(String[] args) throws IOException {
+		//Scanner sc = new Scanner(System.in);
+		//int n = sc.nextInt();
+		//int score = sc.nextInt();
+		//int p = sc.nextInt();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int score = Integer.parseInt(st.nextToken());
+		int p = Integer.parseInt(st.nextToken());
+		String scores = br.readLine();
+		String[] scoreList = scores.split(" ");
+		
 		//sort_descending(scoreList,n);
-
-		if(scoreList[n-1] >= score && n == p){
-			System.out.println(-1);
+		if(Integer.parseInt(scoreList[scoreList.length-1]) >= score && n == p){
+			bw.write(-1);
 		}else{
 			int rank = 1;
-			for(j=0;j<n;j++){
-				if(scoreList[j] > score){
+			for(int j=0;j<n;j++){
+				if(Integer.parseInt(scoreList[j]) > score){
 					rank++;
 				}else{continue;}
 			}
-			System.out.println(rank);
+			bw.write(rank);
 		}
+		br.close();
+		bw.close();
 	}
 	
 	public static void sort_descending(int[] num, int size){
