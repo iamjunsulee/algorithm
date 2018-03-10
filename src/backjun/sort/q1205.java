@@ -36,26 +36,31 @@ public class q1205 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+
 		int n = Integer.parseInt(st.nextToken());
 		int score = Integer.parseInt(st.nextToken());
 		int p = Integer.parseInt(st.nextToken());
-		String scores = br.readLine();
-		String[] scoreList = scores.split(" ");
 		
-		//sort_descending(scoreList,n);
-		if(Integer.parseInt(scoreList[scoreList.length-1]) >= score && n == p){
-			bw.write(-1);
-		}else{
-			int rank = 1;
-			for(int j=0;j<n;j++){
-				if(Integer.parseInt(scoreList[j]) > score){
-					rank++;
-				}else{continue;}
-			}
-			bw.write(rank);
+		st = new StringTokenizer(br.readLine());
+		int[] scoreList = new int[51];
+		
+		for(int i=0;i<n;i++) {
+			scoreList[i] = Integer.parseInt(st.nextToken());
 		}
-		br.close();
+		
+		int rank = 1;
+		if(scoreList[n-1] >= score && n == p){
+			rank = -1;
+		}else{
+			for(int j=0;j<n;j++){
+				if(scoreList[j] > score){
+					rank++;
+				}
+			}
+		}
+		bw.write(rank+"\n");
 		bw.close();
+		br.close(); 
 	}
 	
 	public static void sort_descending(int[] num, int size){
