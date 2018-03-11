@@ -33,28 +33,34 @@ public class q1205 {
 		//int n = sc.nextInt();
 		//int score = sc.nextInt();
 		//int p = sc.nextInt();
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
 		int n = Integer.parseInt(st.nextToken());
-		int score = Integer.parseInt(st.nextToken());
+		long score = Long.parseLong(st.nextToken());
 		int p = Integer.parseInt(st.nextToken());
 		
+		if(n < 0) {return;}
 		st = new StringTokenizer(br.readLine());
-		int[] scoreList = new int[51];
+		long[] scoreList = new long[n];
 		
 		for(int i=0;i<n;i++) {
-			scoreList[i] = Integer.parseInt(st.nextToken());
+			scoreList[i] = Long.parseLong(st.nextToken());
 		}
-		
-		int rank = 1;
-		if(scoreList[n-1] >= score && n == p){
-			rank = -1;
-		}else{
-			for(int j=0;j<n;j++){
-				if(scoreList[j] > score){
-					rank++;
+		sort_descending(scoreList,n);
+		int rank = 1; 
+		if(n > 0) {
+			if(scoreList[n-1] >= score && n == p){
+				rank = -1;
+			}else{
+				for(int j=0;j<n;j++){
+					if(scoreList[j] > score){
+						rank++;
+					}else{
+						break;
+					}
 				}
 			}
 		}
@@ -63,8 +69,9 @@ public class q1205 {
 		br.close(); 
 	}
 	
-	public static void sort_descending(int[] num, int size){
-		int max,temp;
+	public static void sort_descending(long[] num, int size){
+		int max;
+		long temp;
 		for(int i=0;i<size-1;i++){
 			max = i;
 			for(int j=i;j<size;j++){
