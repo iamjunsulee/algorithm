@@ -51,7 +51,7 @@ public class q1205 {
 		}
 		sort_descending(scoreList,n);
 		int rank = 1; 
-		if(n > 0) {
+		if(n > 0) { 
 			if(scoreList[n-1] >= score && n == p){
 				rank = -1;
 			}else{

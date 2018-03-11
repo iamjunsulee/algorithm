@@ -1,0 +1,14 @@
+# Java
+bin/
+out/
+*.class
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
