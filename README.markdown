@@ -7,5 +7,5 @@ AlgorithmJAVA
 * JDK 1.8
 
 ### 문제 사이트
-* [Baekjoon](https://www.acmicpc.net/"Baekjoon")
+* [Baekjoon](https://www.acmicpc.net/)
 
