@@ -29,36 +29,29 @@ public class q2751 {
 	
 	public static void quickSort(int[] data, int start, int end){
 		if(start < end){
-//			System.out.println("start : "+start+", end : "+end);
-			int pivot = data[start];	//±âÁØ°ª ¼³Á¤
-			int left = start+1;			//2 ¹øÂ° ÀÎµ¦½º¸¦ left·Î ÃÊ±â ¼³Á¤
+			int pivot = data[start];	//ê¸°ì¤€ê°’ ì„¤ì •
+			int left = start+1;			//2 ë²ˆì§¸ ì¸ë±ìŠ¤ë¥¼ leftë¡œ ì´ˆê¸° ì„¤ì •
 			int right = end;
 			int temp;
 
-			while(left < right){//right°¡ leftº¸´Ù Å©¸é Á¤·ÄÀÌ µÈ »óÅÂ
-				while(pivot < data[right] && start < right){right--;}	//pivotº¸´Ù Å« °æ¿ì ¿À¸¥ÂÊ¿¡ ÀÖ´Â°Ô ¸ÂÀ¸¹Ç·Î -1
-				while(pivot > data[left] && left < end){left++;}		//pivotº¸´Ù ÀÛÀº °æ¿ì ¿ŞÂÊ¿¡ ÀÖ´Â°Ô ¸ÂÀ¸¹Ç·Î +1
-//				System.out.println("right : "+right+", left : "+left);
+			while(left < right){//rightê°€ leftë³´ë‹¤ í¬ë©´ ì •ë ¬ì´ ëœ ìƒíƒœ
+				while(pivot < data[right] && start < right){right--;}	//pivotë³´ë‹¤ í° ê²½ìš° ì˜¤ë¥¸ìª½ì— ìˆëŠ”ê²Œ ë§ìœ¼ë¯€ë¡œ -1
+				while(pivot > data[left] && left < end){left++;}		//pivotë³´ë‹¤ ì‘ì€ ê²½ìš° ì™¼ìª½ì— ìˆëŠ”ê²Œ ë§ìœ¼ë¯€ë¡œ +1
+
 				if(right > left){
 					temp = data[right];
 					data[right] = data[left];
 					data[left] = temp;
 				}
-//				for(int i=0;i<data.length;i++){
-//					System.out.print(data[i]+" ");
-//				}
-//				System.out.println();
+
 			}
-			//right°¡ °¡¸®Å°´Â °ªÀÌ ´õ Å©´Ù¸é ¹Ù²Ü ÇÊ¿ä°¡¾øÀ½
+			//rightê°€ ê°€ë¦¬í‚¤ëŠ” ê°’ì´ ë” í¬ë‹¤ë©´ ë°”ê¿€ í•„ìš”ê°€ì—†ìŒ
 			if(data[right] < data[start]){
 				temp = data[right];
 				data[right] = data[start];
 				data[start] = temp;
 			}
-//			for(int i=0;i<data.length;i++){
-//				System.out.print(data[i]+" ");
-//			}
-//			System.out.println();
+
 			quickSort(data,start,right-1);
 			quickSort(data,right+1,end);
 		}
