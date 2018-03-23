@@ -25,7 +25,7 @@ import java.io.OutputStreamWriter;
  * 4
  */
 public class q5585 {
-	private int coins[] = {500, 100, 50, 10, 1};//동전 종류
+	private int coins[] = {500, 100, 50, 10, 5, 1};//동전 종류
 	private int minCount[];				//최소개수
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -34,13 +34,12 @@ public class q5585 {
 		q5585 dynamic = new q5585();
 		int value = Integer.parseInt(br.readLine());
 		
-		if(value >= 1 && value < 1000)
-			bw.write(dynamic.Dp(1000 - value)+"\n");
+		bw.write(dynamic.giveChange(1000 - value)+"\n");
 		
 		bw.close();
 		br.close();
 	}
-	public int Dp(int value) {
+	public int giveChange(int value) {
 		minCount = new int[1001];
 		minCount[0] = 0;
 		for(int i = 1;i <= value;i++) {
