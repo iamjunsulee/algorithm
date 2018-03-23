@@ -1,4 +1,4 @@
-package backjun.etc;
+package algorithm.baekjoon.etc;
 
 import java.util.Arrays;
 

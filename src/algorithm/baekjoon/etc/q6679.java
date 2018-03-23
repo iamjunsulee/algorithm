@@ -1,4 +1,4 @@
-package backjun.etc;
+package algorithm.baekjoon.etc;
 
 public class q6679 {
 	/*

@@ -1,4 +1,4 @@
-package backjun.sort;
+package algorithm.baekjoon.sort;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

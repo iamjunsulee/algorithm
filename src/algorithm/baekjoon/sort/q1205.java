@@ -1,4 +1,4 @@
-package backjun.sort;
+package algorithm.baekjoon.sort;
 
 /*
  * 유진이가 즐겨하는 디제이맥스 게임은 각각의 노래마다 랭킹 리스트가 있다. 이것은 매번 게임할 때 마다 얻는 점수가 비오름차순으로 저장되 있는 것이다.

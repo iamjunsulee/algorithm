@@ -1,4 +1,4 @@
-package backjun.sort;
+package algorithm.baekjoon.sort;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,14 +29,14 @@ public class q2751 {
 	
 	public static void quickSort(int[] data, int start, int end){
 		if(start < end){
-			int pivot = data[start];	//ê¸°ì¤€ê°’ ì„¤ì •
-			int left = start+1;			//2 ë²ˆì§¸ ì¸ë±ìŠ¤ë¥¼ leftë¡œ ì´ˆê¸° ì„¤ì •
+			int pivot = data[start];	//±âÁØ°ª ¼³Á¤
+			int left = start+1;			//2 ¹øÂ° ÀÎµ¦½º¸¦ left·Î ÃÊ±â ¼³Á¤
 			int right = end;
 			int temp;
 
-			while(left < right){//rightê°€ leftë³´ë‹¤ í¬ë©´ ì •ë ¬ì´ ëœ ìƒíƒœ
-				while(pivot < data[right] && start < right){right--;}	//pivotë³´ë‹¤ í° ê²½ìš° ì˜¤ë¥¸ìª½ì— ìˆëŠ”ê²Œ ë§ìœ¼ë¯€ë¡œ -1
-				while(pivot > data[left] && left < end){left++;}		//pivotë³´ë‹¤ ì‘ì€ ê²½ìš° ì™¼ìª½ì— ìˆëŠ”ê²Œ ë§ìœ¼ë¯€ë¡œ +1
+			while(left < right){//right°¡ leftº¸´Ù Å©¸é Á¤·ÄÀÌ µÈ »óÅÂ
+				while(pivot < data[right] && start < right){right--;}	//pivotº¸´Ù Å« °æ¿ì ¿À¸¥ÂÊ¿¡ ÀÖ´Â°Ô ¸ÂÀ¸¹Ç·Î -1
+				while(pivot > data[left] && left < end){left++;}		//pivotº¸´Ù ÀÛÀº °æ¿ì ¿ŞÂÊ¿¡ ÀÖ´Â°Ô ¸ÂÀ¸¹Ç·Î +1
 
 				if(right > left){
 					temp = data[right];
@@ -45,7 +45,7 @@ public class q2751 {
 				}
 
 			}
-			//rightê°€ ê°€ë¦¬í‚¤ëŠ” ê°’ì´ ë” í¬ë‹¤ë©´ ë°”ê¿€ í•„ìš”ê°€ì—†ìŒ
+			//right°¡ °¡¸®Å°´Â °ªÀÌ ´õ Å©´Ù¸é ¹Ù²Ü ÇÊ¿ä°¡¾øÀ½
 			if(data[right] < data[start]){
 				temp = data[right];
 				data[right] = data[start];
