@@ -19,11 +19,16 @@ public class postfixNotation {
 		postfixNotation ps = new postfixNotation();
 		ps.postFix(chArr);
 		
-		for(int i=0;i < ps.postfix.length;i++) {
-			System.out.print(ps.postfix[i]);
+		//char 배열은 \0 값으로 초기화됨.
+		for(char ch : ps.postfix) {
+			//배열의 크기가 크기 때문에 
+			//초기화된 값이 아닐 경우에만 출력하도록
+			if(ch != '\0') { 	
+				bw.write(ch);
+			}
 		}
-		bw.close();
 		br.close();
+		bw.close();
 	}
 	public void postFix(char[] infix) {
 		stack = new Stack<Character>();
@@ -32,35 +37,39 @@ public class postfixNotation {
 		
 		for(int i = 0;i < infix.length;i++) {
 			int priority = getPriority(infix[i]);
-
-			switch(infix[i]){
+			char operator = infix[i];
+			//연산자별 처리
+			switch(operator){
 				case '/':
 				case '*':
 				case '+':
 				case '-':
-					if(stack.isEmpty()) {//기존의 다른 연산자가 없을 때
-						stack.push(infix[i]);
+					if(stack.isEmpty()) {	//기존의 다른 연산자가 없을 때
+						stack.push(operator);
 					}else {
+						//현재 top과 우선순위 비교
 						while(!stack.isEmpty() && priority <= getPriority(stack.peek())) {
 							postfix[count++] = stack.pop();	//우선순위가 큰 연산자 배열에 삽입
 						}
-						stack.push(infix[i]);
+						stack.push(operator);
 					}
 					break;
 				case '(':
-					stack.push(infix[i]);
+					stack.push(operator);
 					break;
 				case ')':
+					//좌괄호가 아닐때까지 연산자 추출
 					while(stack.peek() != '(' && !stack.isEmpty()) {
 						postfix[count++] = stack.pop();
 					}
 					stack.pop();	//좌괄호 제거
 					break;
 				default://A~Z 문자일때
-					postfix[count++] = infix[i];
+					postfix[count++] = operator;
 					break;
 			}
 		}
+		//남아있는 연산자 추출
 		while(!stack.isEmpty()){
 			postfix[count++] = stack.pop();
 		}
