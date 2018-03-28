@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Stack;
 
-public class postfixNotation {
+public class PostfixNotation {
 	private Stack<Character> stack;
 	private char[] postfix;
 	public static void main(String[] args) throws IOException {
@@ -16,7 +16,7 @@ public class postfixNotation {
 		String input = br.readLine();
 		char[] chArr = input.toCharArray();
 		
-		postfixNotation ps = new postfixNotation();
+		PostfixNotation ps = new PostfixNotation();
 		ps.postFix(chArr);
 		
 		//char 배열은 \0 값으로 초기화됨.
