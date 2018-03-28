@@ -1,4 +1,4 @@
-package algorithm.baekjoon.stack;
+package algorithm.baekjoon.dataStructure;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
