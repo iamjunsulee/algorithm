@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class q2751 {
+public class Q2751 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -29,14 +29,14 @@ public class q2751 {
 	
 	public static void quickSort(int[] data, int start, int end){
 		if(start < end){
-			int pivot = data[start];	//±âÁØ°ª ¼³Á¤
-			int left = start+1;			//2 ¹øÂ° ÀÎµ¦½º¸¦ left·Î ÃÊ±â ¼³Á¤
+			int pivot = data[start];	//ï¿½ï¿½ï¿½Ø°ï¿½ ï¿½ï¿½ï¿½ï¿½
+			int left = start+1;			//2 ï¿½ï¿½Â° ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ leftï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½
 			int right = end;
 			int temp;
 
-			while(left < right){//right°¡ leftº¸´Ù Å©¸é Á¤·ÄÀÌ µÈ »óÅÂ
-				while(pivot < data[right] && start < right){right--;}	//pivotº¸´Ù Å« °æ¿ì ¿À¸¥ÂÊ¿¡ ÀÖ´Â°Ô ¸ÂÀ¸¹Ç·Î -1
-				while(pivot > data[left] && left < end){left++;}		//pivotº¸´Ù ÀÛÀº °æ¿ì ¿ÞÂÊ¿¡ ÀÖ´Â°Ô ¸ÂÀ¸¹Ç·Î +1
+			while(left < right){//rightï¿½ï¿½ leftï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				while(pivot < data[right] && start < right){right--;}	//pivotï¿½ï¿½ï¿½ï¿½ Å« ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ -1
+				while(pivot > data[left] && left < end){left++;}		//pivotï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ +1
 
 				if(right > left){
 					temp = data[right];
@@ -45,7 +45,7 @@ public class q2751 {
 				}
 
 			}
-			//right°¡ °¡¸®Å°´Â °ªÀÌ ´õ Å©´Ù¸é ¹Ù²Ü ÇÊ¿ä°¡¾øÀ½
+			//rightï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å©ï¿½Ù¸ï¿½ ï¿½Ù²ï¿½ ï¿½Ê¿ä°¡ï¿½ï¿½ï¿½ï¿½
 			if(data[right] < data[start]){
 				temp = data[right];
 				data[right] = data[start];

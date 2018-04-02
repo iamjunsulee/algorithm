@@ -3,7 +3,7 @@ package algorithm.baekjoon.sort;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class q11004 {
+public class Q11004 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -23,50 +23,50 @@ public class q11004 {
     }
     public static void dualPivotQuickSort(int[] data,int start,int end){
         if(start < end){
-            //Ã¹¹øÂ° index °ªÀ» pivot1, ¸¶Áö¸· index °ªÀ» pivot2·Î ¼³Á¤
-            if(data[start] > data[end]){//¸¸¾à pivot2°¡ ´õ ÀÛÀ¸¸é ±³È¯
+            //Ã¹ï¿½ï¿½Â° index ï¿½ï¿½ï¿½ï¿½ pivot1, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ index ï¿½ï¿½ï¿½ï¿½ pivot2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            if(data[start] > data[end]){//ï¿½ï¿½ï¿½ï¿½ pivot2ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
                 swap(data,start,end);
             }
             int pivot1 = data[start];
             int pivot2 = data[end];
-            int low = start + 1;    //pivot1 ´ÙÀ½ indexºÎÅÍ ½ÃÀÛ
-            int k = start + 1;      //¿òÁ÷ÀÌ´Â index
-            int great = end - 1;    //pivot2 Àü indexºÎÅÍ ½ÃÀÛ
+            int low = start + 1;    //pivot1 ï¿½ï¿½ï¿½ï¿½ indexï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            int k = start + 1;      //ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ index
+            int great = end - 1;    //pivot2 ï¿½ï¿½ indexï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
             while(k <= great){
-                if(data[k] < pivot1){   //small °ªÀÎ °æ¿ì
-                    swap(data,k,low);   //low index °ª°ú ±³È¯
-                    low++;              //low ÀÌµ¿
-                }else if(data[k] >= pivot2) {   //large °ªÀÎ °æ¿ì
-                    //large °ªÀÎ °æ¿ì, swapÇÒ °ªÀ» Ã£´Â´Ù
-                    //pivot2º¸´Ù ÀÛÀº °ªÀÌ ³ª¿Ã¶§±îÁö ÀÌµ¿
+                if(data[k] < pivot1){   //small ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+                    swap(data,k,low);   //low index ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+                    low++;              //low ï¿½Ìµï¿½
+                }else if(data[k] >= pivot2) {   //large ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+                    //large ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, swapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Â´ï¿½
+                    //pivot2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
                     while (data[great] > pivot2) {
                         great--;
                     }
-                    if(k > great){  //k, great°¡ ±³Â÷µÇ´Â °æ¿ì, pivot1,2 À§Ä¡ Á¶Á¤
+                    if(k > great){  //k, greatï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½, pivot1,2 ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
                         break;
                     }
                     swap(data,k,great);
-                    //swapÇÑ ÈÄ, pivot1º¸´Ù ÀÛÀ¸¸é low °ª°ú ±³È¯
+                    //swapï¿½ï¿½ ï¿½ï¿½, pivot1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ low ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
                     if(data[k] < pivot1){
                         swap(data,k,low);
                         low++;
                     }
                 }
-                k++;    //medium °ªÀÎ °æ¿ì (pivot1 < data[k] < pivot2)
+                k++;    //medium ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (pivot1 < data[k] < pivot2)
             }
-            low--;      //swap ÇÏ±âÀ§ÇÑ index ÀÌµ¿
-            great++;    //swap ÇÏ±âÀ§ÇÑ index ÀÌµ¿
+            low--;      //swap ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ index ï¿½Ìµï¿½
+            great++;    //swap ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ index ï¿½Ìµï¿½
 
-            swap(data,start,low);       //pivot1°ú ±³È¯
-            swap(data,end,great);       //pivot2¿Í ±³È¯
+            swap(data,start,low);       //pivot1ï¿½ï¿½ ï¿½ï¿½È¯
+            swap(data,end,great);       //pivot2ï¿½ï¿½ ï¿½ï¿½È¯
             //partitioning done
             dualPivotQuickSort(data,start,low-1);
             dualPivotQuickSort(data,low+1,great-1);
             dualPivotQuickSort(data,great+1,end);
         }
     }
-    //swap ÇÔ¼ö
+    //swap ï¿½Ô¼ï¿½
     public static void swap(int[] data, int idx1, int idx2){
         int temp = data[idx1];
         data[idx1] = data[idx2];

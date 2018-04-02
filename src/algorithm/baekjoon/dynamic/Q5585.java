@@ -24,14 +24,14 @@ import java.io.OutputStreamWriter;
  * 예제출력
  * 4
  */
-public class q5585 {
+public class Q5585 {
 	private int coins[] = {500, 100, 50, 10, 5, 1};//동전 종류
 	private int minCount[];				//최소개수
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		q5585 dynamic = new q5585();
+		Q5585 dynamic = new Q5585();
 		int value = Integer.parseInt(br.readLine());
 		
 		bw.write(dynamic.giveChange(1000 - value)+"\n");
