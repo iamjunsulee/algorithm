@@ -1,0 +1,37 @@
+package algorithm.baekjoon.dynamic;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+//Dynamic Programming(가장 큰 증가하는 부분 수열)
+public class Q11055 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();					//정수 개수 
+		int[] sum = new int[n];				//0부터 n-1위치까지의 증가하는 부분 수열 최대 합을 저장할 배열
+		int[] number = new int[n];		//숫자 저장할 배열
+		
+		for(int i = 0;i < n;i++) {
+			number[i] = sc.nextInt();
+		}
+		
+		sum[0] = number[0];//첫번째 경우는 자기 자신이 최대합
+		for(int i = 1;i < n;i++) {
+			int max = 0;
+			for(int j = 0;j < i;j++) {
+				if(number[i] > number[j]) {//현재보다 작은 값을 찾으면
+					System.out.println("max : "+max+"sum : "+sum[j]);
+					max = Math.max(max,sum[j]);//이전까지 최대 증가부분합과 비교하여 최대값 저장
+				}
+			}
+			sum[i] = max + number[i];//작은 값이 없다면 max가 0일테고, 자기 자신만 저장
+			System.out.println(i+"번쨰 : "+sum[i]);
+		}
+		for(int i = 0;i < n;i++) {
+			System.out.println(i+"번쨰 : "+sum[i]);
+		}
+		Arrays.sort(sum);
+		System.out.println(sum[n-1]);
+	}
+}
