@@ -1,6 +1,7 @@
 package algorithm.baekjoon.graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -23,8 +24,9 @@ public class DepthFirstSearch {
 		//인접 리스트
 		for(int i = 1; i <= v;i++) {
 			adList[i] = new ArrayList<Integer>();
-			visited[i] = false;
 		}
+
+		Arrays.fill(visited, false);	//false로 초기화
 		
 		for(int i = 1;i <= e;i++) {
 			int vertex1 = sc.nextInt();
@@ -37,8 +39,9 @@ public class DepthFirstSearch {
 			adList[vertex2].add(vertex1);
 		}
 
-		//dfs_recursive(adArr, visited, start);
-		dfs_stack(adArr, visited, start);
+		//dfsByRecursiveArray(adArr, visited, start);
+		//dfsByStack(adArr, visited, start);
+		dfsByRecursiveList(adList, visited, start);
 		/*
 		for(int i = 1; i <= v;i++) {
 			for(int j = 1;j <= v;j++){
@@ -55,19 +58,32 @@ public class DepthFirstSearch {
 	/*
 		재귀적인 방법으로 구현한 DFS
 	 */
-	public static void dfs_recursive(int[][] a, boolean[] visited, int start){
+	public static void dfsByRecursiveArray(int[][] a, boolean[] visited, int start){
 		visited[start] = true;	//정점 방문
 		System.out.print(start + " ");
 		for(int i = 1;i < a.length;i++){
 			if(a[start][i] == 1 && !visited[i]){//인접 정점이면서 방문하지 않은 경우
-				dfs_recursive(a, visited, i);
+				dfsByRecursiveArray(a, visited, i);
+			}
+		}
+	}
+	/*
+		인접 리스트로 구현한 DFS
+	 */
+	public static void dfsByRecursiveList(ArrayList<Integer>[] a, boolean[] visited, int start){
+		visited[start] = true;	//정점 방문
+		System.out.print(start + " ");
+
+		for(int i : a[start]){
+			if(!visited[i]){//인접 정점이면서 방문하지 않은 경우
+				dfsByRecursiveList(a, visited, i);
 			}
 		}
 	}
 	/*
 		stack을 사용해서 구현한 DFS
 	 */
-	public static void dfs_stack(int[][] a, boolean[] visited, int start){
+	public static void dfsByStack(int[][] a, boolean[] visited, int start){
 		Stack<Integer> stack = new Stack<Integer>();	//스택 선언
 
 		stack.push(start);		//정점 push
