@@ -29,14 +29,14 @@ public class Q2751 {
 	
 	public static void quickSort(int[] data, int start, int end){
 		if(start < end){
-			int pivot = data[start];	//���ذ� ����
-			int left = start+1;			//2 ��° �ε����� left�� �ʱ� ����
+			int pivot = data[start];	//기준값 설정
+			int left = start+1;			//2번째 인덱스를 left로 초기 설정
 			int right = end;
 			int temp;
 
-			while(left < right){//right�� left���� ũ�� ������ �� ����
-				while(pivot < data[right] && start < right){right--;}	//pivot���� ū ��� �����ʿ� �ִ°� �����Ƿ� -1
-				while(pivot > data[left] && left < end){left++;}		//pivot���� ���� ��� ���ʿ� �ִ°� �����Ƿ� +1
+			while(left < right){//right가 left보다 크면 정렬이 된 상태
+				while(pivot < data[right] && start < right){right--;}	//pivot보다 큰 경우 오른쪽에 있는 게 맞으므로 -1
+				while(pivot > data[left] && left < end){left++;}		//pivot보다 작은 경우 왼쪽에 있는 게 맞으므로 +1
 
 				if(right > left){
 					temp = data[right];
@@ -45,7 +45,7 @@ public class Q2751 {
 				}
 
 			}
-			//right�� ����Ű�� ���� �� ũ�ٸ� �ٲ� �ʿ䰡����
+			//right가 가리키는 값이 더 크다면 바꿀 필요가 없음
 			if(data[right] < data[start]){
 				temp = data[right];
 				data[right] = data[start];
