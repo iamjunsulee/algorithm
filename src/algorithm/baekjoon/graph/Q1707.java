@@ -47,9 +47,8 @@ public class Q1707 {
             }
             boolean isBipartite = true;
             for(int a = 1;a <= v;a++){
-               for(int b = 0;b < adList[a].size();b++){
-                   int idx = adList[a].get(b);
-                   if(visited[a] == visited[idx]){//색상이 같은 경우, 이분그래프가 아님
+               for(int next : adList[a]){
+                   if(visited[a] == visited[next]){//색상이 같은 경우, 이분그래프가 아님
                        isBipartite = false;
                    }
                }
@@ -62,8 +61,7 @@ public class Q1707 {
         visited[start] = color;	//정점 색칠
         //System.out.print(start + " ");
 
-        for(int i = 0;i < adList[start].size();i++){
-            int next = adList[start].get(i);    //다음 방문할 정점
+        for(int next : adList[start]){
             if(visited[next] == 0){//미방문인경우
                 dfs(next, 3 - color);//처음과 다른 색으로 색칠
             }
