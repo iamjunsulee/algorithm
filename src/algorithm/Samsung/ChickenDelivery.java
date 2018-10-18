@@ -46,7 +46,7 @@ public class ChickenDelivery {
      */
     public static void solution(int start, int count){
         visited[start] = true;  //치킨집 방문
-        System.out.println(start + " 방문");
+        //System.out.println(start + " 방문");
         if(count < M){  //M개의 치킨집을 방문하지 않았을 경우
             for(int i = start;i < chicken.size();i++){
                 solution(i + 1, count + 1); //다음 치킨집 방문
@@ -58,15 +58,13 @@ public class ChickenDelivery {
                 int min = 10000000;
                 for(int j = 0;j < chicken.size();j++){
                     if(visited[j]){
-                        System.out.println("집 좌표 :"+house.get(i).x+", "+house.get(i).y+", 치킨집 좌표 :"+chicken.get(j).x+", "+chicken.get(j).y);
+                        //System.out.println("집 좌표 :"+house.get(i).x+", "+house.get(i).y+", 치킨집 좌표 :"+chicken.get(j).x+", "+chicken.get(j).y);
                         min = Math.min(min, calc(house.get(i), chicken.get(j)));
                     }
                 }
                 total += min;
             }
-            if(result > total){
-                result = total;
-            }
+            result = Math.min(result, total);
         }
         visited[start] = false;     //backtracking
     }
