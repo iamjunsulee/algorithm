@@ -3,6 +3,10 @@ package algorithm.Samsung;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * 드래곤커브 문제
+ * 규칙 찾기
+ */
 public class DragonCurve {
 	static int[][] point = new int[101][101];
 	
