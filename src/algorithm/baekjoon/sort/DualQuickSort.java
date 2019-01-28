@@ -16,43 +16,43 @@ public class DualQuickSort {
     }
     public static void dualPivotQuickSort(int[] data,int start,int end){
         if(start < end){
-            //ù��° index ���� pivot1, ������ index ���� pivot2�� ����
-            if(data[start] > data[end]){//���� pivot2�� �� ������ ��ȯ
+            //첫번째 index 값을 pivot1, 마지막 index 값을 pivot2로 설정
+            if(data[start] > data[end]){//만약 pivot2가 더 작으면 교환
                 swap(data,start,end);
             }
             int pivot1 = data[start];
             int pivot2 = data[end];
-            int low = start + 1;    //pivot1 ���� index���� ����
-            int k = start + 1;      //�����̴� index
-            int great = end - 1;    //pivot2 �� index���� ����
+            int low = start + 1;    //pivot1 다음 index부터 시작
+            int k = start + 1;      //움직이는 index
+            int great = end - 1;    //pivot2 전 index부터 시작
 
             while(k <= great){
-                if(data[k] < pivot1){   //small ���� ���
-                    swap(data,k,low);   //low index ���� ��ȯ
-                    low++;              //low �̵�
-                }else if(data[k] >= pivot2) {   //large ���� ���
-                    //large ���� ���, swap�� ���� ã�´�
-                    //pivot2���� ���� ���� ���ö����� �̵�
+                if(data[k] < pivot1){   //small 값인 경우
+                    swap(data,k,low);   //low index 값과 교환
+                    low++;              //low 이동
+                }else if(data[k] >= pivot2) {   //large 값인 경우
+                    //large 값인 경우, swap할 값을 찾는다
+                    //pivot2보다 작은 값이 나올때까지 이동
                     while (data[great] > pivot2) {
                         great--;
                     }
-                    if(k > great){  //k, great�� �����Ǵ� ���, pivot1,2 ��ġ ����
+                    if(k > great){  //k, great가 교차되는 경우, pivot1,2 위치 조정
                         break;
                     }
                     swap(data,k,great);
-                    //swap�� ��, pivot1���� ������ low ���� ��ȯ
+                    //swap한 후, pivot1보다 작으면 low 값과 교환
                     if(data[k] < pivot1){
                         swap(data,k,low);
                         low++;
                     }
                 }
-                k++;    //medium ���� ��� (pivot1 < data[k] < pivot2)
+                k++;    //medium 값인 경우 (pivot1 < data[k] < pivot2)
             }
-            low--;      //swap �ϱ����� index �̵�
-            great++;    //swap �ϱ����� index �̵�
+            low--;      //swap 하기위한 index 이동
+            great++;    //swap 하기위한 index 이동
 
-            swap(data,start,low);       //pivot1�� ��ȯ
-            swap(data,end,great);       //pivot2�� ��ȯ
+            swap(data,start,low);       //pivot1과 교환
+            swap(data,end,great);       //pivot2와 교환
             //partitioning done
             dualPivotQuickSort(data,start,low-1);
             dualPivotQuickSort(data,low+1,great-1);
