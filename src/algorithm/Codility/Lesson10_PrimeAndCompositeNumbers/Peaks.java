@@ -14,16 +14,16 @@ public class Peaks {
 
         for (int i = 1;i < A.length - 1;i++) {
             if (A[i-1] < A[i] && A[i] > A[i+1]) {
-                indexList.add(i);
+                indexList.add(i);   //peak index 추가
             }
         }
 
         for (int i = A.length;i >= 1;i--) {
             if (A.length % i == 0) {
-                int blockLength = A.length / i;
+                int blockLength = A.length / i; //block 하나 당 길이
                 int count = 0;
                 for (int peak : indexList) {
-                    if (peak / blockLength == count) {
+                    if (peak / blockLength == count) {  //block 당 peak가 포함됐는지
                         count++;
                     }
                 }
