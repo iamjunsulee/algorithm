@@ -19,6 +19,7 @@ public class CountSemiPrimes {
         prime[1] = 0;   //소수 아니므로 제외
 
         //에라토스테네스의 체
+        //배수를 다 지우고 남은 수는 소수
         for (int i = 2;i <= N;i++) {
             for (int j = i + i;j <= N;j += i) {
                 if (prime[j] == 0) continue;
